@@ -7,9 +7,7 @@ const new_user_button = document.getElementById('new_user_button')
 const login_button = document.getElementById('login_button')
 
 
-function getUser(){
 
-}
 function displayBudget(json){
   console.log(json)
 }
