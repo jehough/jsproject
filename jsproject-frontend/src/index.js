@@ -5,13 +5,25 @@ const new_user_form = document.getElementById('new_user_form')
 const button_container = document.getElementById('button_container')
 const new_user_button = document.getElementById('new_user_button')
 const login_button = document.getElementById('login_button')
-let formData= {name: ""}
+
 
 function getUser(){
 
 }
 function displayBudget(json){
   console.log(json)
+}
+
+
+function makeObject(method, formData){
+  return  {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+      "Action": "application/json"
+    },
+    body: JSON.stringify(formData)
+  };
 }
 
 function displayError(json) {
@@ -35,28 +47,14 @@ new_user.addEventListener('click', function(e){
 })
 
 new_user_button.addEventListener('click',()=>{
-  let configObj = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Action": "application/json"
-    },
-    body: JSON.stringify({name: document.getElementById('newName').value})
-  };
+  let configObj = makeObject("POST", {name: document.getElementById('newName').value})
   fetch("http://localhost:3000/users/new", configObj)
   .then(resp => resp.json())
   .then(json => displayBudget(json))
 })
 
 login_button.addEventListener('click',()=>{
-  let configObj = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Action": "application/json"
-    },
-    body: JSON.stringify({name: document.getElementById('userName').value})
-  };
+  let configObj = makeObject("POST", {name: document.getElementById('userName').value})
   json = fetch("http://localhost:3000/users", configObj)
   .then(resp => resp.json())
   .then(json => {
