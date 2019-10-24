@@ -1,23 +1,37 @@
 const login = document.getElementById('login')
 const new_user = document.getElementById('new_user')
+const login_form = document.getElementById('login_form')
+const new_user_form = document.getElementById('new_user_form')
 const button_container = document.getElementById('button_container')
 const new_user_button = document.getElementById('new_user_button')
 const login_button = document.getElementById('login_button')
 let formData= {name: ""}
 
+function getUser(){
 
+}
 function displayBudget(json){
   console.log(json)
 }
 
+function displayError(json) {
+  button_container.style.visibility = "visible"
+  login_form.style.visiblility = "hidden"
+  login_form.style.visibility = "hidden"
+  error = document.createElement('p')
+  error.innerHTML = json["message"]
+  error.id = "error"
+  button_container.appendChild(error)
+}
+
 login.addEventListener('click', function(e){
   button_container.style.visibility = "hidden"
-  document.getElementById('login_form').style.visibility = "visible"
+  login_form.style.visibility = "visible"
 })
 
 new_user.addEventListener('click', function(e){
   button_container.style.visibility = "hidden"
-  document.getElementById('new_user_form').style.visibility = "visible"
+  new_user_form.style.visibility = "visible"
 })
 
 new_user_button.addEventListener('click',()=>{
@@ -43,7 +57,11 @@ login_button.addEventListener('click',()=>{
     },
     body: JSON.stringify({name: document.getElementById('userName').value})
   };
-  fetch("http://localhost:3000/users", configObj)
+  json = fetch("http://localhost:3000/users", configObj)
   .then(resp => resp.json())
-  .then(json => displayBudget(json))
+  .then(json => {
+    if (json["status"]==="error"){
+      displayError(json)
+    }
+    displayBudget(json)})
 })
