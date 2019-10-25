@@ -19,8 +19,10 @@ function displayBudget(json){
     available = category["attributes"]["available"]
     new Category(id, name, available)
   }
-  document.getElementsByTagName('h1')[0].remove()
-  document.getElementsByClassName('container')[0].remove()
+  const myNode = document.getElementsByTagName('main')[0]
+  while (myNode.firstChild){
+    myNode.removeChild(myNode.firstChild)
+  }
   budget.display()
 }
 

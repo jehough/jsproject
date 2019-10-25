@@ -30,15 +30,14 @@ span {
   color: red;
 }
 #budgetHeader {
-  width: 80%;
+  width: 100%;
   text-align: center;
   font-size: 2em;
   font-style: oblique;
   font-family: sans-serif;
   color: white;
   text-shadow: .05em .05em #404241;
-  padding: 3%;
-  margin: 3%;
+  padding: 2%;
   border-style: solid;
   border-color: white;
   border-width: .3em;
@@ -49,7 +48,17 @@ main {
   display: flex;
   justify-content: center;
 }
-
+.red{
+  color: red
+}
+.green{
+  color: black;
+  padding: 3%;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: black;
+  background-color: green;
+}
 #button_container, #login_form, #new_user_form{
   width: 100%;
   height: 100%;
@@ -74,6 +83,24 @@ main {
 #new_user_form {
   visibility: hidden;
   z-index: 20
+}
+
+.budgetContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.categories-card {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: auto;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: white;
+  background-color: #748279
 }
 .container{
   width: 40%;
