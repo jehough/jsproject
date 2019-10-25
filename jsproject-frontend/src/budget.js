@@ -4,4 +4,8 @@ class Budget {
     this.amount = amount
     budget = this
   }
+
+  display(){
+    console.log(budget)
+  }
 }

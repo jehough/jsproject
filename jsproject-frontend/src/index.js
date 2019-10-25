@@ -9,7 +9,14 @@ const login_button = document.getElementById('login_button')
 
 
 function displayBudget(json){
-  
+  budgetobj = json["included"].shift()
+  new Budget(budgetobj["attributes"]["total"])
+  for(const category of json["data"]){
+    name = category["attributes"]["name"]
+    available = category["attributes"]["available"]
+    new Category(name, available)
+  }
+  budget.display()
 }
 
 
