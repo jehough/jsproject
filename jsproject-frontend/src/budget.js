@@ -17,7 +17,8 @@ class Budget {
     div.className = "budgetContainer"
     divid.value = budget.id
     div.setAttributeNode(divid)
-    h2.innerHTML = `Total Assets: ${budget.amount} - Committed: ${committed} = Available to Budget: ${budget.amount - committed}`
+    h2.id = "budgetHeader"
+    h2.innerHTML = `Total Assets: <span>${budget.amount}</span> - Committed: <span>${committed}</span> = Available to Budget: <span>${budget.amount - committed}</span>`
     main.appendChild(h2)
   }
 }
