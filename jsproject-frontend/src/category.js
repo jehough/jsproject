@@ -43,7 +43,7 @@ class Category {
     btn.className = "submit_button"
     btnid.value = this.id
     btn.setAttributeNode(btnid)
-    btn.innerHTML = "Add Money"
+    btn.innerHTML = "Move Money"
     btn.addEventListener('click',function(){
       this.addMoney()
     })
