@@ -84,13 +84,19 @@ class Category {
     const formData = {
       category_id: this.id
     }
+    let cont
+    if (cont = document.getElementById(`transaction-category ${this.id}`)){
+      cont.remove()
+    }
+    else{
     fetch(`http://localhost:3000/category/${this.id}`, makeObject("GET"))
       .then(resp => resp.json())
-      .then(json => this.displayTransactions(json))
+      .then(json => this.displayTransactions(json))}
   }
 
   displayTransactions(json){
     const cont = document.createElement('div')
+    cont.id = `transaction-category ${this.id}`
     const category = document.getElementsByClassName('categories-container').namedItem(`Category ${this.id}`)
     const table = document.createElement('table')
     const tr = document.createElement('tr')
@@ -108,6 +114,7 @@ class Category {
       const trn = new Transaction(transaction["attributes"]["description"], transaction["attributes"]["amount"], transaction["attributes"]["created_at"], transaction["id"])
       trn.display(table)
     }
-    console.log(json)
+    cont.appendChild(table)
+    category.appendChild(cont)
   }
 }

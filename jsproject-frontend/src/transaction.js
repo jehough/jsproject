@@ -2,7 +2,8 @@ class Transaction {
   constructor(description, amount, date, id){
     this.description = description
     this.amount = amount
-    this.date = date.toDateString()
+    const dt = new Date(date)
+    this.date = dt.toDateString()
     this.id = id
   }
   display(table){
