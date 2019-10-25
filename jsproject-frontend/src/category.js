@@ -6,4 +6,7 @@ class Category {
     this.available = available
     categories.push(this)
   }
+  static totalCommitted(){
+    return categories.reduce((t,e) => t + e.available, 0)
+  }
 }
