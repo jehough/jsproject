@@ -17,7 +17,7 @@ class Category {
     const container = document.createElement('div')
     container.className = 'categories-container'
     card.className = 'categories-card'
-    container.id = `Category ${this.id}`
+    container.id = `Category${this.id}`
     divid.value = this.id
     card.setAttributeNode(divid)
     this.displayName(card)
@@ -43,16 +43,10 @@ class Category {
   }
   createAddButton(card){
     const btn = document.createElement('button')
-    const btnid = document.createAttribute('category-id')
     btn.className = "submit_button"
-    btnid.value = this.id
-    btn.setAttributeNode(btnid)
     btn.innerHTML = "Move Money"
-    btn.addEventListener('click',function(){
-      this.addMoney()
-    })
+    btn.addEventListener('click',()=> this.addMoney())
     card.appendChild(btn)
-
   }
   createAddTransactionButton(card){
     const btn = document.createElement('button')
@@ -75,7 +69,29 @@ class Category {
     )
     card.appendChild(btn)
   }
-  addMoney(){}
+  addMoney(){
+    let indiv
+    if (indiv = document.getElementById(`addMoney_${this.id}`)){
+      indiv.remove()
+    }
+    else{
+    const cont = document.getElementById(`Category${this.id}`)
+    const div = document.createElement('div')
+    const p = document.createElement('p')
+    const am = document.createElement('input')
+    const button = document.createElement('button')
+    div.id = `addMoney_${this.id}`
+    div.className = 'addMoneyForm'
+    am.type = "text"
+    am.id = `addMoney_${this.id}_input`
+    button.innerHTML = 'Submit'
+    button.className = 'submit_button'
+    button.addEventListener('click', ()=> this.transferMoney())
+    p.appendChild(am)
+    p.appendChild(button)
+    div.appendChild(p)
+    cont.appendChild(div)}
+  }
   addTransaction(){}
   getTransactions(btn){
     const formData = {
@@ -97,7 +113,7 @@ class Category {
     const cont = document.createElement('div')
     cont.id = `transaction-category ${this.id}`
     cont.className = 'transactionContainer'
-    const category = document.getElementsByClassName('categories-container').namedItem(`Category ${this.id}`)
+    const category = document.getElementById(`Category${this.id}`)
     const table = document.createElement('table')
     const tr = document.createElement('tr')
     const thd = document.createElement('th')
@@ -117,4 +133,28 @@ class Category {
     cont.appendChild(table)
     category.appendChild(cont)
   }
+
+  transferMoney(){
+    const amount = parseInt(document.getElementById(`addMoney_${this.id}_input`).value)
+
+    if (typeof amount === "number"){
+      const indiv = document.getElementById(`addMoney_${this.id}`)
+      indiv.remove()
+      this.available += amount
+      this.updateMoney()}
+    else{
+      alert("Must be a Number")
+    }
+  }
+
+  updateMoney(){
+    const formData = {
+      id: this.id,
+      available: this.available
+    }
+    fetch(`http://localhost:3000/category/${this.id}`, makeObject("PATCH", formData))
+      .then(resp => resp.json())
+      .then(json => displayBudget(json))
+  }
+
 }

@@ -102,6 +102,7 @@ main {
 
 .budgetContainer{
   display: flex;
+  margin: 0;
   flex-direction: column;
   justify-content: center;
 }
@@ -188,4 +189,10 @@ table tr:nth-child(even) {
 
 table tfoot td {
   font-size: 21px;
+}
+
+.addMoneyForm {
+  display: flex;
+  justify-content: center;
+  height: auto;
 }
