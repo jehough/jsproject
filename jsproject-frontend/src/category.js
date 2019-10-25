@@ -67,6 +67,7 @@ class Category {
     const btn = document.createElement('button')
     const btnid = document.createAttribute('category-id')
     btnid.value = this.id
+    btn.className = "displayTransactions"
     btn.setAttributeNode(btnid)
     btn.innerHTML = "&#x27F1<br>&#x27F0"
     btn.addEventListener('click',function(){

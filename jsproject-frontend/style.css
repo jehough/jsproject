@@ -27,7 +27,7 @@ h1 {
 }
 
 h4{
-  width: 50%;
+  width: 40%;
   padding: 6px;
   font-size: 1.25em;
   font-style: oblique;
@@ -37,6 +37,11 @@ h4{
 }
 span {
   color: red;
+}
+
+.displayTransactions{
+  background-color: inherit;
+  border: none;
 }
 #budgetHeader {
   width: 100%;
