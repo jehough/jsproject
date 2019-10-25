@@ -160,8 +160,13 @@ main {
 	top:1px;
 }
 
+.transactionContainer{
+  margin-left: 2%;
+  width: 97%
+}
 table {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: sans-serif;
+  font-style: oblique;
   border: 2px solid #4F7849;
   background-color: #EEEEEE;
   width: 100%;
@@ -178,18 +183,9 @@ table tbody td {
   color: #4F7849;
 }
 table tr:nth-child(even) {
-  background: #CEE0CC;
+  background: #748279;
 }
-table tfoot {
-  font-size: 21px;
-  font-weight: bold;
-  color: #FFFFFF;
-  background: #4F7849;
-  background: -moz-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
-  background: -webkit-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
-  background: linear-gradient(to bottom, #7b9a76 0%, #60855b 66%, #4F7849 100%);
-  border-top: 1px solid #444444;
-}
+
 table tfoot td {
   font-size: 21px;
 }

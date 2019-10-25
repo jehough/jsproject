@@ -69,26 +69,25 @@ class Category {
 
   createDisplayTransactionButton(card){
     const btn = document.createElement('button')
-    const btnid = document.createAttribute('category-id')
-    btnid.value = this.id
     btn.className = "displayTransactions"
-    btn.setAttributeNode(btnid)
-    btn.innerHTML = "&#x27F1<br>&#x27F0"
-    btn.addEventListener('click',()=> this.getTransactions()
+    btn.innerHTML = "&#x27F1"
+    btn.addEventListener('click',()=> this.getTransactions(btn)
     )
     card.appendChild(btn)
   }
   addMoney(){}
   addTransaction(){}
-  getTransactions(){
+  getTransactions(btn){
     const formData = {
       category_id: this.id
     }
     let cont
     if (cont = document.getElementById(`transaction-category ${this.id}`)){
       cont.remove()
+      btn.innerHTML = '&#x27F1'
     }
     else{
+      btn.innerHTML = '&#x27F0'
     fetch(`http://localhost:3000/category/${this.id}`, makeObject("GET"))
       .then(resp => resp.json())
       .then(json => this.displayTransactions(json))}
@@ -97,6 +96,7 @@ class Category {
   displayTransactions(json){
     const cont = document.createElement('div')
     cont.id = `transaction-category ${this.id}`
+    cont.className = 'transactionContainer'
     const category = document.getElementsByClassName('categories-container').namedItem(`Category ${this.id}`)
     const table = document.createElement('table')
     const tr = document.createElement('tr')
