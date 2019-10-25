@@ -9,7 +9,7 @@ const login_button = document.getElementById('login_button')
 
 
 function displayBudget(json){
-  console.log(json)
+  
 }
 
 
