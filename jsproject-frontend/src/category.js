@@ -34,7 +34,7 @@ class Category {
     else{
       amount = `<span class="green">${this.available}</span>`
     }
-    h4.innerHTML = `${this.name} Available:` + amount
+    h4.innerHTML = `${this.name} Available: <br>` + amount
     card.appendChild(h4)
   }
   createAddButton(card){
@@ -43,7 +43,7 @@ class Category {
     btn.className = "submit_button"
     btnid.value = this.id
     btn.setAttributeNode(btnid)
-    btn.innerHTML = "Add Money to Category"
+    btn.innerHTML = "Add Money"
     btn.addEventListener('click',function(){
       this.addMoney()
     })
