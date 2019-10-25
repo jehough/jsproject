@@ -17,10 +17,9 @@ class Category {
     const container = document.createElement('div')
     container.className = 'categories-container'
     card.className = 'categories-card'
+    container.id = `Category ${this.id}`
     divid.value = this.id
-    const divid2 = divid.cloneNode(true)
-    container.setAttributeNode(divid)
-    card.setAttributeNode(divid2)
+    card.setAttributeNode(divid)
     this.displayName(card)
     this.createAddButton(card)
     this.createAddTransactionButton(card)
@@ -91,6 +90,11 @@ class Category {
   }
 
   displayTransactions(json){
+    const cont = document.createElement('div')
+    const category = document.getElementsByClassName('categories-container').namedItem(`Category ${this.id}`)
+    for (const transaction of json["data"]){
+      trn = new Transaction(transaction["id"], transaction["attributes"]["description"], transaction["attributes"]["amount"], transaction["attributes"]["created_at"])
+    }
     console.log(json)
   }
 }
