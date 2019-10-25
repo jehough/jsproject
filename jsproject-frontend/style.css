@@ -27,6 +27,7 @@ h1 {
 }
 
 h4{
+  padding: 6px;
   font-size: 1em;
   font-style: oblique;
   font-family: sans-serif;
@@ -61,7 +62,6 @@ main {
 .green{
   color: black;
   padding: 3%;
-  margin-top: 10%;
   border-radius: 10px;
   border-width: 1px;
   border-color: black;

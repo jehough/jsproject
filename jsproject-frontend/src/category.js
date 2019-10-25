@@ -19,8 +19,8 @@ class Category {
     card.setAttributeNode(divid)
     this.displayName(card)
     this.createAddButton(card)
-    this.createDisplayTransactionButton(card)
     this.createAddTransactionButton(card)
+    this.createDisplayTransactionButton(card)
     div.appendChild(card)
     main.appendChild(div)
   }
@@ -34,7 +34,7 @@ class Category {
     else{
       amount = `<span class="green">${this.available}</span>`
     }
-    h4.innerHTML = `${this.name} Available: <br>` + amount
+    h4.innerHTML = `${this.name} Available: ` + amount
     card.appendChild(h4)
   }
   createAddButton(card){
@@ -66,10 +66,9 @@ class Category {
   createDisplayTransactionButton(card){
     const btn = document.createElement('button')
     const btnid = document.createAttribute('category-id')
-    btn.className = "submit_button"
     btnid.value = this.id
     btn.setAttributeNode(btnid)
-    btn.innerHTML = "View Transactions"
+    btn.innerHTML = "&#x27F1<br>&#x27F0"
     btn.addEventListener('click',function(){
       this.displayTransactions()
     })
