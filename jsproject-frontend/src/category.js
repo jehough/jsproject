@@ -14,14 +14,19 @@ class Category {
     const card = document.createElement('div')
     const divid = document.createAttribute('category-id')
     const div = document.getElementsByClassName('budgetContainer')[0]
+    const container = document.createElement('div')
+    container.className = 'categories-container'
     card.className = 'categories-card'
     divid.value = this.id
-    card.setAttributeNode(divid)
+    const divid2 = divid.cloneNode(true)
+    container.setAttributeNode(divid)
+    card.setAttributeNode(divid2)
     this.displayName(card)
     this.createAddButton(card)
     this.createAddTransactionButton(card)
     this.createDisplayTransactionButton(card)
-    div.appendChild(card)
+    container.appendChild(card)
+    div.appendChild(container)
     main.appendChild(div)
   }
 
@@ -70,12 +75,22 @@ class Category {
     btn.className = "displayTransactions"
     btn.setAttributeNode(btnid)
     btn.innerHTML = "&#x27F1<br>&#x27F0"
-    btn.addEventListener('click',function(){
-      this.displayTransactions()
-    })
+    btn.addEventListener('click',()=> this.getTransactions()
+    )
     card.appendChild(btn)
   }
   addMoney(){}
   addTransaction(){}
-  displayTransactions(){}
+  getTransactions(){
+    const formData = {
+      category_id: this.id
+    }
+    fetch(`http://localhost:3000/category/${this.id}`, makeObject("GET"))
+      .then(resp => resp.json())
+      .then(json => this.displayTransactions(json))
+  }
+
+  displayTransactions(json){
+    console.log(json)
+  }
 }
