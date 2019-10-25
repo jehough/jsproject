@@ -94,6 +94,7 @@ class Category {
     const category = document.getElementsByClassName('categories-container').namedItem(`Category ${this.id}`)
     for (const transaction of json["data"]){
       trn = new Transaction(transaction["id"], transaction["attributes"]["description"], transaction["attributes"]["amount"], transaction["attributes"]["created_at"])
+      trn.display(cont)
     }
     console.log(json)
   }
