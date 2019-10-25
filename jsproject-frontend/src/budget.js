@@ -9,7 +9,6 @@ class Budget {
   }
 
   display(){
-    const main = document.querySelector('main')
     const div = document.createElement('div')
     const divid = document.createAttribute('budget-id')
     const h2 = document.createElement('h2')
@@ -20,5 +19,8 @@ class Budget {
     h2.id = "budgetHeader"
     h2.innerHTML = `Total Assets: <span>${budget.amount}</span> - Committed: <span>${committed}</span> = Available to Budget: <span>${budget.amount - committed}</span>`
     main.appendChild(h2)
+    for(const category of categories){
+      category.displayCategory()
+    }
   }
 }

@@ -5,6 +5,7 @@ const new_user_form = document.getElementById('new_user_form')
 const button_container = document.getElementById('button_container')
 const new_user_button = document.getElementById('new_user_button')
 const login_button = document.getElementById('login_button')
+const main = document.querySelector("main")
 
 
 
