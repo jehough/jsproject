@@ -8,14 +8,18 @@ const login_button = document.getElementById('login_button')
 
 
 
+
 function displayBudget(json){
   budgetobj = json["included"].shift()
-  new Budget(budgetobj["attributes"]["total"])
+  new Budget(budgetobj["id"], budgetobj["attributes"]["total"])
   for(const category of json["data"]){
+    id = category["id"]
     name = category["attributes"]["name"]
     available = category["attributes"]["available"]
-    new Category(name, available)
+    new Category(id, name, available)
   }
+  document.getElementsByTagName('h1')[0].remove()
+  document.getElementsByClassName('container')[0].remove()
   budget.display()
 }
 

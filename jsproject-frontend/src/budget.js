@@ -1,11 +1,14 @@
 let budget
 class Budget {
-  constructor(amount){
+  constructor(id, amount){
+    this.id = id
     this.amount = amount
     budget = this
   }
 
   display(){
-    console.log(budget)
+    const main = document.querySelector('main')
+    const div = document.createElement('div')
+
   }
 }

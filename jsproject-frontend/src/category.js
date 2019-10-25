@@ -1,6 +1,7 @@
 const categories = []
 class Category {
-  constructor(name, available){
+  constructor(id, name, available){
+    this.id = id
     this.name = name
     this.available = available
     categories.push(this)
