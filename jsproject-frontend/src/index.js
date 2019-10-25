@@ -38,6 +38,9 @@ function makeObject(method, formData){
   };
 }
 
+function getDate(date){
+  
+}
 function displayError(json) {
   button_container.style.visibility = "visible"
   login_form.style.visiblility = "hidden"

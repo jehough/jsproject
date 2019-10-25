@@ -92,9 +92,21 @@ class Category {
   displayTransactions(json){
     const cont = document.createElement('div')
     const category = document.getElementsByClassName('categories-container').namedItem(`Category ${this.id}`)
+    const table = document.createElement('table')
+    const tr = document.createElement('tr')
+    const thd = document.createElement('th')
+    const tha = document.createElement('th')
+    const tht = document.createElement('th')
+    thd.innerHTML = "Description"
+    tha.innerHTML = "Amount"
+    tht.innerHTML = "Date"
+    tr.appendChild(thd)
+    tr.appendChild(tha)
+    tr.appendChild(tht)
+    table.appendChild(tr)
     for (const transaction of json["data"]){
-      trn = new Transaction(transaction["attributes"]["description"], transaction["attributes"]["amount"], transaction["attributes"]["created_at"], transaction["id"])
-      trn.display(cont)
+      const trn = new Transaction(transaction["attributes"]["description"], transaction["attributes"]["amount"], transaction["attributes"]["created_at"], transaction["id"])
+      trn.display(table)
     }
     console.log(json)
   }
