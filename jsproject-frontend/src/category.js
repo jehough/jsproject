@@ -185,15 +185,18 @@ class Category {
     const category = document.getElementById(`Category${this.id}`)
     const table = document.createElement('table')
     const tr = document.createElement('tr')
+    const thr = document.createElement('th')
     const thd = document.createElement('th')
     const tha = document.createElement('th')
     const tht = document.createElement('th')
+    thr.innerHTML = "Remove"
     thd.innerHTML = "Description"
     tha.innerHTML = "Amount"
     tht.innerHTML = "Date"
     tr.appendChild(thd)
     tr.appendChild(tha)
     tr.appendChild(tht)
+    tr.appendChild(thr)
     table.appendChild(tr)
     for (const transaction of json["data"]){
       const trn = new Transaction(transaction["attributes"]["description"], transaction["attributes"]["amount"], transaction["attributes"]["created_at"], transaction["id"])

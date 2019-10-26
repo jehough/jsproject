@@ -17,6 +17,23 @@ class Transaction {
     tr.appendChild(tdd)
     tr.appendChild(tda)
     tr.appendChild(tdt)
+    this.createRemove(tr)
     table.appendChild(tr)
+  }
+
+  createRemove(tr){
+    const td = document.createElement('td')
+    td.innerHTML = "Delete Transaction"
+    td.addEventListener('click', ()=> this.removeTransaction())
+    tr.appendChild(td)
+  }
+
+  removeTransaction(){
+    formData = {
+      id: this.id
+    }
+    fetch(`http://localhost:3000/transactions/${this.id}`, makeObject("DELETE", formData))
+      .then(resp => resp.json())
+      .then(json => console.log(json))
   }
 }
