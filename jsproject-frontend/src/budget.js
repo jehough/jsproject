@@ -9,21 +9,62 @@ class Budget {
     budget = this
   }
 
-  makeBudgetHeader(h2){
+  makeBudgetHeadline(h2){
     const committed = Category.totalCommitted()
     const available = this.amount - committed
     let avail = (available >= 0)? `<span class="green">$${available}<span>` : `<span class="red">$${available}<span>`
     h2.innerHTML = `Total Assets: <span>$${this.amount}</span> - Committed: <span>$${committed}</span> = Available to Budget: ${avail}`
   }
-$
+  createNewCategoryButton(nav){
+    const button = document.createElement('button')
+    button.id = "CreateCategory"
+    button.innerHTML = "Add a Category"
+    button.className = "submit_button"
+    button.addEventListener('click',()=> addCategory())
+    nav.appendChild(button)
+  }
+
+  createAddIncomeButton(nav){
+    const button = document.createElement('button')
+    button.id = "addIncome"
+    button.innerHTML = "Add Income"
+    button.className = "submit_button"
+    button.addEventListener('click', ()=> addIncome())
+    nav.appendChild(button)
+  }
+
+  createSeeDistributionButton(div){
+    const button = document.createElement('button')
+    button.id = "Distribution"
+    button.innerHTML = "See Distribution"
+    button.className = "submit_button"
+    button.addEventListener('click', ()=> graphDistribution())
+    div.appendChild(button)
+  }
+
   display(){
+    document.getElementById('openHeader').remove()
     const div = document.createElement('div')
     const h2 = document.createElement('h2')
-    div.className = "budgetContainer"
+    const h1 = document.createElement('h1')
+    div.id = "budgetHeaderContainer"
+    h1.innerHTML = `${this.user}'s Budgetbook`
     h2.id = "budgetHeader"
-    this.makeBudgetHeader(h2)
+    this.makeBudgetHeadline(h2)
+    div.appendChild(h1)
     div.appendChild(h2)
-    main.appendChild(div)
+    header.appendChild(div)
+    this.createNavBar()
+  }
+
+  createNavBar(){
+    const nav = document.querySelector('nav')
+    const div = document.createElement('div')
+    div.id = "navButtonContainer"
+    this.createNewCategoryButton(div)
+    this.createAddIncomeButton(div)
+    this.createSeeDistributionButton(div)
+    nav.appendChild(div)
   }
 
 

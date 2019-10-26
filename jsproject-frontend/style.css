@@ -3,13 +3,17 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+
 header {
   display: flex;
   justify-content: center;
   width: 100%;
 }
+nav {
+  margin-bottom: 10%;
+}
 
-h1 {
+#openHeader {
   width: 80%;
   text-align: center;
   font-size: 4em;
@@ -46,11 +50,9 @@ span {
   background-color: inherit;
   border: none;
 }
-#budgetHeader {
-  width: 110%;
-  margin-left: -8.6%;
+#budgetHeaderContainer {
+  width: 100%;
   text-align: center;
-  font-size: 2em;
   font-style: oblique;
   font-family: sans-serif;
   color: white;
@@ -59,7 +61,24 @@ span {
   border-style: solid;
   border-color: white;
   border-width: .3em;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #748279
+}
+
+#navButtonContainer{
+  width: 95.3%;
+  text-align: center;
+  font-style: oblique;
+  font-family: sans-serif;
+  color: white;
+  text-shadow: .05em .05em #404241;
+  padding: 2%;
+  border-style: solid;
+  border-color: white;
+  border-width: .3em;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-color: #748279
 }
 main {
@@ -113,6 +132,7 @@ main {
 }
 
 .budgetContainer{
+  width: 80%;
   display: flex;
   margin: -3em;
   flex-direction: column;

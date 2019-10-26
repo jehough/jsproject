@@ -6,6 +6,7 @@ const button_container = document.getElementById('button_container')
 const new_user_button = document.getElementById('new_user_button')
 const login_button = document.getElementById('login_button')
 const main = document.querySelector("main")
+const header = document.querySelector("header")
 
 
 
@@ -27,6 +28,9 @@ function displayBudget(json){
     myNode.removeChild(myNode.firstChild)
   }
   budget.display()
+  const div = document.createElement('div')
+  div.className = "budgetContainer"
+  main.appendChild(div)
   for(const category of categories){
     category.displayCategory()
   }
@@ -37,7 +41,7 @@ function updateBudget(json){
   category = categories.find((e)=> e.id === json["data"]["id"])
   category.available = json["data"]["attributes"]["available"]
   h2 = document.getElementById("budgetHeader")
-  budget.makeBudgetHeader(h2)
+  budget.makeBudgetHeadline(h2)
   h4 = document.getElementById(`Category${category.id}_name`)
   category.displayName(h4)
 }
