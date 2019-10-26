@@ -63,11 +63,19 @@ class Category {
     card.appendChild(btn)
   }
   addMoney(){
-    let indiv
-    if (indiv = document.getElementById(`addMoney_${this.id}`)){
-      indiv.remove()
+    const tdiv = document.getElementById(`transactionForm${this.id}`)
+    const adiv = document.getElementById(`addMoney_${this.id}`)
+    const ttab = document.getElementById(`transaction-category ${this.id}`)
+    if (adiv){
+      adiv.remove()
     }
     else{
+      if (tdiv){
+        tdiv.remove()
+      }
+      else if(ttab){
+        ttab.remove()
+      }
     const cont = document.getElementById(`Category${this.id}`)
     const div = document.createElement('div')
     const p = document.createElement('p')
@@ -86,11 +94,19 @@ class Category {
     cont.appendChild(div)}
   }
   addTransaction(){
-    let indiv
-    if (indiv = document.getElementById(`transactionForm${this.id}`)){
-      indiv.remove()
+    const tdiv = document.getElementById(`transactionForm${this.id}`)
+    const adiv = document.getElementById(`addMoney_${this.id}`)
+    const ttab = document.getElementById(`transaction-category ${this.id}`)
+    if (tdiv){
+      tdiv.remove()
     }
     else{
+      if (adiv){
+        adiv.remove()
+      }
+      else if(ttab){
+        ttab.remove()
+      }
       const div = document.createElement('div')
       const indes = document.createElement('input')
       const inam = document.createElement('input')
@@ -122,7 +138,9 @@ class Category {
   createTransaction(){
     const description = document.getElementById(`description${this.id}`).value
     const amount = document.getElementById(`amount${this.id}`).value
+    const div = document.getElementById(`transactionForm${this.id}`)
     if (amount.match(/^[0-9]+(\.{1}[0-9]{1,2})?$/, 'g')){
+      div.remove()
       const formData = {
         category_id: this.id,
         description: description,
@@ -140,12 +158,20 @@ class Category {
     const formData = {
       category_id: this.id
     }
-    let cont
-    if (cont = document.getElementById(`transaction-category ${this.id}`)){
-      cont.remove()
+    const tdiv = document.getElementById(`transactionForm${this.id}`)
+    const adiv = document.getElementById(`addMoney_${this.id}`)
+    const ttab = document.getElementById(`transaction-category ${this.id}`)
+    if (ttab){
+      ttab.remove()
       btn.innerHTML = '&#x27F1'
     }
     else{
+      if (adiv){
+        adiv.remove()
+      }
+      else if(tdiv){
+        tdiv.remove()
+      }
       btn.innerHTML = '&#x27F0'
     fetch(`http://localhost:3000/category/${this.id}`, makeObject("GET"))
       .then(resp => resp.json())
