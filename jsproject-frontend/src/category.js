@@ -82,7 +82,7 @@ class Category {
     const am = document.createElement('input')
     const button = document.createElement('button')
     div.id = `addMoney_${this.id}`
-    div.className = 'addMoneyForm'
+    div.className = 'inputForm'
     am.type = "text"
     am.id = `addMoney_${this.id}_input`
     button.innerHTML = 'Submit'
@@ -115,6 +115,7 @@ class Category {
       const btn = document.createElement('button')
       const cont = document.getElementById(`Category${this.id}`)
       div.id = `transactionForm${this.id}`
+      div.className = "inputForm"
       indes.type = "text"
       indes.id = `description${this.id}`
       labdes.for = `description${this.id}`

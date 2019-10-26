@@ -223,13 +223,17 @@ table tfoot td {
   font-size: 21px;
 }
 
-.addMoneyForm {
-  display: flex;
+.inputForm {
+  width: 80%;
   justify-content: center;
+  margin-left: 5%;
+  display: flex;
   height: auto;
-}
-
-.addMoneyForm p {
-  width: 100%;
-  text-align: center;
+  background-color: #748279;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  font-style: oblique;
+  font-family: sans-serif;
+  color: white;
 }
