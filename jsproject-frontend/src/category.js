@@ -32,10 +32,10 @@ class Category {
   displayName(h4){
     let amount
     if (this.amount < 0){
-      amount = `<span class="red">${this.available}</span>`
+      amount = `<span class="red">$${this.available}</span>`
     }
     else{
-      amount = `<span class="green">${this.available}</span>`
+      amount = `<span class="green">$${this.available}</span>`
     }
     h4.innerHTML = `${this.name} Available: ` + amount
   }

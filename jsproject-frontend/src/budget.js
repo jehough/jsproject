@@ -11,10 +11,10 @@ class Budget {
   makeBudgetHeader(h2){
     const committed = Category.totalCommitted()
     const available = this.amount - committed
-    let avail = (available >= 0)? `<span class="green">${available}<span>` : `<span class="red">${available}<span>`
-    h2.innerHTML = `Total Assets: <span>${this.amount}</span> - Committed: <span>${committed}</span> = Available to Budget: ${avail}`
+    let avail = (available >= 0)? `<span class="green">$${available}<span>` : `<span class="red">$${available}<span>`
+    h2.innerHTML = `Total Assets: <span>$${this.amount}</span> - Committed: <span>$${committed}</span> = Available to Budget: ${avail}`
   }
-
+$
   display(){
     const div = document.createElement('div')
     const h2 = document.createElement('h2')
