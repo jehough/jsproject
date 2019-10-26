@@ -99,7 +99,37 @@ class Category {
       const labdes = document.createElement('label')
       const labam = document.createElement('label')
       const btn = document.createElement('button')
+      const cont = document.getElementById(`Category${this.id}`)
+      div.id = `transactionForm${this.id}`
+      indes.type = "text"
+      indes.id = `description${this.id}`
+      labdes.for = `description${this.id}`
+      labdes.innerHTML = "Description"
+      inam.type = "text"
+      inam.id = `amount${this.id}`
+      labam.for = `amount${this.id}`
+      labam.innerHTML = "Amount"
+      btn.className = "submit_button"
+      btn.innerHTML = "Add Transaction"
+      btn.addEventListener('click',() => this.createTransaction)
+      div.appendChild(labdes)
+      div.appendChild(indes)
+      div.appendChild(labam)
+      div.appendChild(inam)
+      div.appendChild(btn)
+      cont.appendChild(div)
     }
+  }
+
+  createTransaction(){
+    const formData = {
+      category_id: this.idea,
+      description: document.getElementById(`description${this.id}`).value,
+      amount: document.getElementById(`amount${this.id}`).value
+    }
+    fetch('http://localhost:3000/transactions', makeObject('POST', formData))
+    .then(resp=> resp.json())
+    .then(json=> updateBudget(json))
   }
 
   getTransactions(btn){

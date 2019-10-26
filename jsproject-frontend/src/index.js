@@ -30,6 +30,9 @@ function displayBudget(json){
   }
 }
 
+function updateBudget(json){
+  console.log(json)
+}
 
 function makeObject(method, formData){
   return  {

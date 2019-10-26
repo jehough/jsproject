@@ -137,8 +137,8 @@ main {
 }
 
 .submit_button {
-  width: 20%;
-  height: 2em;
+  width: auto;
+  height: auto;
   margin: auto;
 	box-shadow: 3px 4px 0px 0px #899599;
 	background:linear-gradient(to bottom, #dee0e3 5%, #b5b8bd 100%);
