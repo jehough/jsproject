@@ -129,7 +129,7 @@ class Category {
     }
     fetch('http://localhost:3000/transactions', makeObject('POST', formData))
     .then(resp=> resp.json())
-    .then(json=> updateBudget(json))
+    .then(json=> displayBudget(json))
   }
 
   getTransactions(btn){

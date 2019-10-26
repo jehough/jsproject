@@ -104,7 +104,7 @@ main {
 
 .budgetContainer{
   display: flex;
-  margin: 0;
+  margin: -3em;
   flex-direction: column;
   justify-content: center;
 }
