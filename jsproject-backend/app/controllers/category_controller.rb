@@ -7,8 +7,8 @@ class CategoryController < ApplicationController
   def update
     @category.available = params[:available]
     @category.save
-    options= {include: [:categories]}
-    render json: BudgetSerializer.new(@category.budget, options)
+    options= {include: [:budget]}
+    render json: CategorySerializer.new(@category, options)
   end
 
   private

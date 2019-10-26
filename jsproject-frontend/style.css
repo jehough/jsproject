@@ -26,6 +26,7 @@ h1 {
   background-color: #748279
 }
 
+
 h4{
   width: 40%;
   padding: 6px;
@@ -38,7 +39,7 @@ h4{
   text-shadow: .05em .05em #404241;
 }
 span {
-  color: red;
+  color: black;
 }
 
 .displayTransactions{
@@ -46,7 +47,8 @@ span {
   border: none;
 }
 #budgetHeader {
-  width: 100%;
+  width: 110%;
+  margin-left: -8.6%;
   text-align: center;
   font-size: 2em;
   font-style: oblique;
@@ -65,12 +67,20 @@ main {
   justify-content: center;
 }
 .red{
-  color: red
+  color: black;
+  font-size: 1em;
+  padding: 1%;
+  border: solid;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: black;
+  background-color: red;
 }
 .green{
   color: black;
   font-size: 1em;
-  padding: 3%;
+  padding: 1%;
+  border: solid;
   border-radius: 10px;
   border-width: 1px;
   border-color: black;
