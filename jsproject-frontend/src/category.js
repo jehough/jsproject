@@ -120,14 +120,20 @@ class Category {
   }
 
   createTransaction(){
-    const formData = {
-      category_id: this.id,
-      description: document.getElementById(`description${this.id}`).value,
-      amount: document.getElementById(`amount${this.id}`).value
+    const description = document.getElementById(`description${this.id}`).value
+    const amount = document.getElementById(`amount${this.id}`).value
+    if (amount.match(/^[0-9]+(\.{1}[0-9]{1,2})?$/, 'g')){
+      const formData = {
+        category_id: this.id,
+        description: description,
+        amount: parseInt(amount)
+      }
+      fetch('http://localhost:3000/transactions', makeObject('POST', formData))
+      .then(resp=> resp.json())
+      .then(json=> updateBudget(json))}
+    else{
+      alert("Must be a Number in the format NN.NN or NNN")
     }
-    fetch('http://localhost:3000/transactions', makeObject('POST', formData))
-    .then(resp=> resp.json())
-    .then(json=> updateBudget(json))
   }
 
   getTransactions(btn){
@@ -172,15 +178,15 @@ class Category {
   }
 
   transferMoney(){
-    const amount = parseInt(document.getElementById(`addMoney_${this.id}_input`).value)
-
-    if (typeof amount === "number"){
+    const amount = document.getElementById(`addMoney_${this.id}_input`).value
       const indiv = document.getElementById(`addMoney_${this.id}`)
+    if (amount.match(/^[0-9]+(\.{1}[0-9]{1,2})?$/, 'g')){
       indiv.remove()
-      this.available += amount
+      const amountint = parseInt(amount)
+      this.available += amountint
       this.updateMoney()}
     else{
-      alert("Must be a Number")
+      alert("Must be a Number in the format NN.NN or NNN")
     }
   }
 
