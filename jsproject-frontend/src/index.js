@@ -11,9 +11,10 @@ const main = document.querySelector("main")
 
 
 function displayBudget(json){
-  budgetobj = json["included"].shift()
+  budgetobj = json["data"]
   new Budget(budgetobj["id"], budgetobj["attributes"]["total"])
-  for(const category of json["data"]){
+  categories.splice(0,categories.length)
+  for(const category of json["included"]){
     id = category["id"]
     name = category["attributes"]["name"]
     available = category["attributes"]["available"]
@@ -39,7 +40,7 @@ function makeObject(method, formData){
 }
 
 function getDate(date){
-  
+
 }
 function displayError(json) {
   button_container.style.visibility = "visible"
