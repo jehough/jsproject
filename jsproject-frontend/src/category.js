@@ -111,7 +111,7 @@ class Category {
       labam.innerHTML = "Amount"
       btn.className = "submit_button"
       btn.innerHTML = "Add Transaction"
-      btn.addEventListener('click',() => this.createTransaction)
+      btn.addEventListener('click',() => this.createTransaction())
       div.appendChild(labdes)
       div.appendChild(indes)
       div.appendChild(labam)
@@ -123,7 +123,7 @@ class Category {
 
   createTransaction(){
     const formData = {
-      category_id: this.idea,
+      category_id: this.id,
       description: document.getElementById(`description${this.id}`).value,
       amount: document.getElementById(`amount${this.id}`).value
     }
