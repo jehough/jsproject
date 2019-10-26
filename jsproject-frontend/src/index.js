@@ -11,8 +11,10 @@ const main = document.querySelector("main")
 
 
 function displayBudget(json){
+
+  userobj = json["included"].pop()
   budgetobj = json["data"]
-  new Budget(budgetobj["id"], budgetobj["attributes"]["total"])
+  new Budget(budgetobj["id"], budgetobj["attributes"]["total"], userobj["attributes"]["name"])
   categories.splice(0,categories.length)
   for(const category of json["included"]){
     id = category["id"]

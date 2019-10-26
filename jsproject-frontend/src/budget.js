@@ -2,9 +2,10 @@ let budget
 
 
 class Budget {
-  constructor(id, amount){
+  constructor(id, amount, user){
     this.id = id
     this.amount = amount
+    this.user = user
     budget = this
   }
 
