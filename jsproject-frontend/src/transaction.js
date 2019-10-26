@@ -29,11 +29,11 @@ class Transaction {
   }
 
   removeTransaction(){
-    formData = {
+    const formData = {
       id: this.id
     }
     fetch(`http://localhost:3000/transactions/${this.id}`, makeObject("DELETE", formData))
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => updateBudget(json))
   }
 }

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   post '/users' => 'users#login'
   post '/users/new' => 'users#new'
   resources :category, only: [:show, :update, :create]
-  resources :transactions, only: [:create]
+  resources :transactions, only: [:create, :destroy]
   resources :budget, only: [:update]
 end
