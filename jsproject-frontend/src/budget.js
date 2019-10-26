@@ -20,7 +20,7 @@ class Budget {
     button.id = "CreateCategory"
     button.innerHTML = "Add a Category"
     button.className = "submit_button"
-    button.addEventListener('click',()=> addCategory())
+    button.addEventListener('click',()=> this.addCategory())
     nav.appendChild(button)
   }
 
@@ -29,7 +29,7 @@ class Budget {
     button.id = "addIncome"
     button.innerHTML = "Add Income"
     button.className = "submit_button"
-    button.addEventListener('click', ()=> addIncome())
+    button.addEventListener('click', ()=> this.addIncome())
     nav.appendChild(button)
   }
 
@@ -38,7 +38,7 @@ class Budget {
     button.id = "Distribution"
     button.innerHTML = "See Distribution"
     button.className = "submit_button"
-    button.addEventListener('click', ()=> graphDistribution())
+    button.addEventListener('click', ()=> this.graphDistribution())
     div.appendChild(button)
   }
 
@@ -67,5 +67,14 @@ class Budget {
     nav.appendChild(div)
   }
 
-
+  addCategory(){
+    const name = prompt("Enter a Category Name")
+    formData = {
+      budget_id: this.id,
+      category_name: name
+    }
+    fetch('http://localhost:3000/category', makeObject("POST", formData))
+      .then(resp => resp.json())
+      .then(json => console.log(json))
+  }
 }
