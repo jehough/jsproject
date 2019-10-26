@@ -12,7 +12,7 @@ class Transaction < ApplicationRecord
 
   def undoUpdateBudget
     category = self.category
-    category.availablle += self.amount
+    category.available += self.amount
     category.save
     budget = category.budget
     budget.total += self.amount

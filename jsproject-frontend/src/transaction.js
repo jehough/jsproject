@@ -24,14 +24,15 @@ class Transaction {
   createRemove(tr){
     const td = document.createElement('td')
     td.innerHTML = "Delete Transaction"
-    td.addEventListener('click', ()=> this.removeTransaction())
+    td.addEventListener('click', ()=> this.removeTransaction(tr))
     tr.appendChild(td)
   }
 
-  removeTransaction(){
+  removeTransaction(tr){
     const formData = {
       id: this.id
     }
+    tr.remove()
     fetch(`http://localhost:3000/transactions/${this.id}`, makeObject("DELETE", formData))
       .then(resp => resp.json())
       .then(json => updateBudget(json))
