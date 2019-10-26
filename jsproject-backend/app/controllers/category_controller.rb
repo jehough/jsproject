@@ -12,7 +12,13 @@ class CategoryController < ApplicationController
   end
 
   def create
-    puts params
+    category = Category.new(budget_id: params[:budget_id], name: params[:category_name], available: 0)
+    if category.save
+      options= {include: [:budget]}
+      render json: CategorySerializer.new(category, options)
+    else
+      render json: {type: "error", message: "Something went wrong"}
+    end
   end
   private
 
