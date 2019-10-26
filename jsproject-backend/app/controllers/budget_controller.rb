@@ -5,9 +5,10 @@ class BudgetController < ApplicationController
     budget = Budget.find(params[:id])
     budget.total = params[:total]
     if budget.save
-      resp json: BudgetSerializer.new(budget)
+      render json: BudgetSerializer.new(budget)
     else
-      resp json: {type: "error", message: "Something Went Wrong"}
+      render json: {type: "error", message: "Something Went Wrong"}
+    end
   end
 
 end

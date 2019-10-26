@@ -89,7 +89,13 @@ class Budget {
       }
       fetch(`http://localhost:3000/budget/${this.id}`, makeObject("PATCH", formData))
         .then(resp => resp.json())
-        .then(json => console.log(json))
+        .then(json => this.updateIncome(json))
     }
+  }
+
+  updateIncome(json){
+    const h2 = document.getElementById('budgetHeader')
+    budget.amount = json["data"]["attributes"]["total"]
+    this.makeBudgetHeadline(h2)
   }
 }
