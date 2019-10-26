@@ -25,6 +25,9 @@ function displayBudget(json){
     myNode.removeChild(myNode.firstChild)
   }
   budget.display()
+  for(const category of categories){
+    category.displayCategory()
+  }
 }
 
 

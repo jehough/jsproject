@@ -11,5 +11,6 @@ class UsersController < ApplicationController
   end
 
   def new
+    User.create(name: params[:name])
   end
 end

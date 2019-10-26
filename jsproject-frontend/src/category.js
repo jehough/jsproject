@@ -50,14 +50,9 @@ class Category {
   }
   createAddTransactionButton(card){
     const btn = document.createElement('button')
-    const btnid = document.createAttribute('category-id')
     btn.className = "submit_button"
-    btnid.value = this.id
-    btn.setAttributeNode(btnid)
     btn.innerHTML = "Add Transaction"
-    btn.addEventListener('click',function(){
-      this.addTransaction()
-    })
+    btn.addEventListener('click',()=> this.addTransaction())
     card.appendChild(btn)
   }
 
@@ -92,7 +87,21 @@ class Category {
     div.appendChild(p)
     cont.appendChild(div)}
   }
-  addTransaction(){}
+  addTransaction(){
+    let indiv
+    if (indiv = document.getElementById(`transactionForm${this.id}`)){
+      indiv.remove()
+    }
+    else{
+      const div = document.createElement('div')
+      const indes = document.createElement('input')
+      const inam = document.createElement('input')
+      const labdes = document.createElement('label')
+      const labam = document.createElement('label')
+      const btn = document.createElement('button')
+    }
+  }
+
   getTransactions(btn){
     const formData = {
       category_id: this.id

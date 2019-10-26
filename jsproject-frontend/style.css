@@ -31,7 +31,9 @@ h4{
   padding: 6px;
   font-size: 1.25em;
   font-style: oblique;
-  font-family: sans-serif;
+  font-family: sans-serdisplay: flex;
+  justify-content: center;
+  height: auto;if;
   color: white;
   text-shadow: .05em .05em #404241;
 }
@@ -136,7 +138,7 @@ main {
 
 .submit_button {
   width: 20%;
-  height: 20%;
+  height: 2em;
   margin: auto;
 	box-shadow: 3px 4px 0px 0px #899599;
 	background:linear-gradient(to bottom, #dee0e3 5%, #b5b8bd 100%);
@@ -195,4 +197,9 @@ table tfoot td {
   display: flex;
   justify-content: center;
   height: auto;
+}
+
+.addMoneyForm p {
+  width: 100%;
+  text-align: center;
 }

@@ -20,8 +20,5 @@ class Budget {
     h2.innerHTML = `Total Assets: <span>${budget.amount}</span> - Committed: <span>${committed}</span> = Available to Budget: <span>${budget.amount - committed}</span>`
     div.appendChild(h2)
     main.appendChild(div)
-    for(const category of categories){
-      category.displayCategory()
-    }
   }
 }
