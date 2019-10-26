@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post '/users/new' => 'users#new'
   resources :category, only: [:show, :update, :create]
   resources :transactions, only: [:create]
+  resources :budget, only: [:update]
 end

@@ -84,8 +84,8 @@ class Budget {
     if(amount.match(/^[0-9]+(\.{1}[0-9]{1,2})?$/, 'g')){
       this.amount += amount
       const formData = {
-        id = this.id
-        total = this.amount
+        id: this.id,
+        total: this.amount
       }
       fetch(`http://localhost:3000/budget/${this.id}`, makeObject("PATCH", formData))
         .then(resp => resp.json())
