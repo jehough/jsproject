@@ -11,6 +11,9 @@ class CategoryController < ApplicationController
     render json: CategorySerializer.new(@category, options)
   end
 
+  def create
+    puts params
+  end
   private
 
   def find_category

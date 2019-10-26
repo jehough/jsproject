@@ -69,7 +69,7 @@ class Budget {
 
   addCategory(){
     const name = prompt("Enter a Category Name")
-    formData = {
+    const formData = {
       budget_id: this.id,
       category_name: name
     }
