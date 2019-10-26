@@ -82,7 +82,7 @@ class Budget {
   addIncome(){
     const amount = prompt("How much Income to add?")
     if(amount.match(/^[0-9]+(\.{1}[0-9]{1,2})?$/, 'g')){
-      this.amount += amount
+      this.amount += parseInt(amount)
       const formData = {
         id: this.id,
         total: this.amount
