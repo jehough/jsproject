@@ -46,6 +46,13 @@ function updateBudget(json){
   category.displayName(h4)
 }
 
+function addCategory(json){
+  const h2 = document.getElementById("budgetHeader")
+  category = new Category(json["data"]["id"], json["data"]["attributes"]["name"], json["data"]["attributes"]["available"])
+  budget.makeBudgetHeadline(h2)
+  category.displayCategory()
+}
+
 function makeObject(method, formData){
   return  {
     method: method,

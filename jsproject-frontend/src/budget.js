@@ -69,12 +69,20 @@ class Budget {
 
   addCategory(){
     const name = prompt("Enter a Category Name")
-    const formData = {
+    if (name != '' && name != null)
+    {const formData = {
       budget_id: this.id,
       category_name: name
     }
     fetch('http://localhost:3000/category', makeObject("POST", formData))
       .then(resp => resp.json())
-      .then(json => console.log(json))
+      .then(json => addCategory(json))}
+  }
+
+  addIncome(){
+    const amount = prompt("How much Income to add?")
+    if(amount.match(/^[0-9]+(\.{1}[0-9]{1,2})?$/, 'g')){
+      this.amount += amount
+    }
   }
 }
