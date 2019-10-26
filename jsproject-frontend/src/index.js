@@ -30,6 +30,16 @@ function displayBudget(json){
   }
 }
 
+function updateBudget(json){
+  budget.amount = json["included"][0]["attributes"]["total"]
+  category = categories.find((e)=> e.id === json["data"]["id"])
+  category.available = json["data"]["attributes"]["available"]
+  h2 = document.getElementById("budgetHeader")
+  budget.makeBudgetHeader(h2)
+  h4 = document.getElementById(`Category${category.id}_name`)
+  category.displayName(h4)
+}
+
 function makeObject(method, formData){
   return  {
     method: method,

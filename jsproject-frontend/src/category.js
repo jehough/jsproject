@@ -12,15 +12,15 @@ class Category {
 
   displayCategory(){
     const card = document.createElement('div')
-    const divid = document.createAttribute('category-id')
     const div = document.getElementsByClassName('budgetContainer')[0]
     const container = document.createElement('div')
+    const h4 = document.createElement('h4')
+    h4.id =  `Category${this.id}_name`
     container.className = 'categories-container'
     card.className = 'categories-card'
     container.id = `Category${this.id}`
-    divid.value = this.id
-    card.setAttributeNode(divid)
-    this.displayName(card)
+    this.displayName(h4)
+    card.appendChild(h4)
     this.createAddButton(card)
     this.createAddTransactionButton(card)
     this.createDisplayTransactionButton(card)
@@ -29,8 +29,7 @@ class Category {
     main.appendChild(div)
   }
 
-  displayName(card){
-    const h4 = document.createElement('h4')
+  displayName(h4){
     let amount
     if (this.amount < 0){
       amount = `<span class="red">${this.available}</span>`
@@ -39,7 +38,6 @@ class Category {
       amount = `<span class="green">${this.available}</span>`
     }
     h4.innerHTML = `${this.name} Available: ` + amount
-    card.appendChild(h4)
   }
   createAddButton(card){
     const btn = document.createElement('button')
@@ -129,7 +127,7 @@ class Category {
     }
     fetch('http://localhost:3000/transactions', makeObject('POST', formData))
     .then(resp=> resp.json())
-    .then(json=> displayBudget(json))
+    .then(json=> updateBudget(json))
   }
 
   getTransactions(btn){
@@ -193,7 +191,7 @@ class Category {
     }
     fetch(`http://localhost:3000/category/${this.id}`, makeObject("PATCH", formData))
       .then(resp => resp.json())
-      .then(json => displayBudget(json))
+      .then(json => updateBudget(json))
   }
 
 }

@@ -8,17 +8,22 @@ class Budget {
     budget = this
   }
 
+  makeBudgetHeader(h2){
+    const committed = Category.totalCommitted()
+    const available = this.amount - committed
+    let avail = (available >= 0)? `<span class="green">${available}<span>` : `<span class="red">${available}<span>`
+    h2.innerHTML = `Total Assets: <span>${this.amount}</span> - Committed: <span>${committed}</span> = Available to Budget: ${avail}`
+  }
+
   display(){
     const div = document.createElement('div')
-    const divid = document.createAttribute('budget-id')
     const h2 = document.createElement('h2')
-    const committed = Category.totalCommitted()
     div.className = "budgetContainer"
-    divid.value = budget.id
-    div.setAttributeNode(divid)
     h2.id = "budgetHeader"
-    h2.innerHTML = `Total Assets: <span>${budget.amount}</span> - Committed: <span>${committed}</span> = Available to Budget: <span>${budget.amount - committed}</span>`
+    this.makeBudgetHeader(h2)
     div.appendChild(h2)
     main.appendChild(div)
   }
+
+
 }
