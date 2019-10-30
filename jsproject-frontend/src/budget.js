@@ -63,7 +63,7 @@ class Budget {
     div.id = "navButtonContainer"
     this.createNewCategoryButton(div)
     this.createAddIncomeButton(div)
-    this.createSeeDistributionButton(div)
+    //this.createSeeDistributionButton(div)
     nav.appendChild(div)
   }
 

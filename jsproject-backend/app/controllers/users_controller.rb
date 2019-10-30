@@ -11,6 +11,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    User.create(name: params[:name])
+    user = User.new(name: params[:name])
+    if user.save
+      budget = Budget.create(total: 0, user_id: user.id)
+      options = {include: [:user, :categories]}
+      render json: BudgetSerializer.new(budget, options)
+    else
+      render json: {status: "error", message: "Username is taken"}
   end
 end
