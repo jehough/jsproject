@@ -71,10 +71,7 @@ function displayError(json) {
   button_container.style.visibility = "visible"
   login_form.style.visiblility = "hidden"
   login_form.style.visibility = "hidden"
-  error = document.createElement('p')
-  error.innerHTML = json["message"]
-  error.id = "error"
-  button_container.appendChild(error)
+  alert(json["message"])
 }
 
 login.addEventListener('click', function(e){
