@@ -12,7 +12,7 @@ const header = document.querySelector("header")
 
 
 function displayBudget(json){
-
+  console.log(json)
   userobj = json["included"].pop()
   budgetobj = json["data"]
   new Budget(budgetobj["id"], budgetobj["attributes"]["total"], userobj["attributes"]["name"])
@@ -68,10 +68,11 @@ function getDate(date){
 
 }
 function displayError(json) {
-  button_container.style.visibility = "visible"
-  login_form.style.visiblility = "hidden"
-  login_form.style.visibility = "hidden"
   alert(json["message"])
+  button_container.style.visibility = "visible"
+  login_form.style.visibility = "hidden"
+  new_user_form.style.visibility = "hidden"
+
 }
 
 login.addEventListener('click', function(e){
@@ -88,7 +89,12 @@ new_user_button.addEventListener('click',()=>{
   let configObj = makeObject("POST", {name: document.getElementById('newName').value})
   fetch("http://localhost:3000/users/new", configObj)
   .then(resp => resp.json())
-  .then(json => displayBudget(json))
+  .then(json => {
+    if (json["status"]==="error"){
+      displayError(json)
+    }
+    else{
+    displayBudget(json)}})
 })
 
 login_button.addEventListener('click',()=>{
@@ -99,5 +105,7 @@ login_button.addEventListener('click',()=>{
     if (json["status"]==="error"){
       displayError(json)
     }
-    displayBudget(json)})
+    else {
+    displayBudget(json)}
+    })
 })

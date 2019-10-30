@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       options = {include: [:user, :categories]}
       render json: BudgetSerializer.new(budget, options)
     else
-      render json: {status: "error", message: "There is a problem with that name, try another"}
+      render json: {status: "error", code: 400, message: "There was a problem with that name, try another." }
     end
   end
 end
