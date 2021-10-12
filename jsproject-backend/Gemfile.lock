@@ -79,7 +79,8 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    puma (3.12.4)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-cors (1.0.5)
       rack (>= 1.6.0)
@@ -144,7 +145,7 @@ DEPENDENCIES
   dotenv
   fast_jsonapi
   listen (>= 3.0.5, < 3.2)
-  puma (~> 3.12)
+  puma (~> 4.3)
   rack-cors
   rails (~> 5.2.3)
   spring
